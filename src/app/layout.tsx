@@ -21,7 +21,7 @@ export default function RootLayout({
           <Nav />
           <main className="pb-5">{children}</main>
           <footer className="mt-2 border-t border-edge py-6 text-center text-[15px] font-medium text-fg-dim">
-            Created by Paolo Mazio
+            Created by Paolo Mazio & Michele Bettin
           </footer>
         </div>
       </body>
