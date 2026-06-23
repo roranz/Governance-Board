@@ -201,7 +201,7 @@ export default function App() {
         {nav.tab === "capacity" && <CapacityView state={state} update={update} go={go} nav={nav} />}
         {nav.tab === "todos" && <TodosView state={state} update={update} />}
       </main>
-      <footer style={st.footer}>Created by Paolo Mazio</footer>
+      <footer style={st.footer}>Created by Paolo Mazio & Michele Bettin</footer>
       </div>
     </div>
   );
