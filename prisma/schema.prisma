@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Application {
+  id        String    @id @default(cuid())
+  name      String
+  desc      String    @default("")
+  color     String
+  position  Int       @default(0)
+  projects  Project[]
+}
+
+model Owner {
+  id   String @id @default(cuid())
+  name String @unique
+}
+
+model Project {
+  id         String      @id @default(cuid())
+  app        Application @relation(fields: [appId], references: [id], onDelete: Cascade)
+  appId      String
+  name       String
+  status     String      @default("Pianificato")
+  start      String      @default("")
+  end        String      @default("")
+  progress   Int         @default(0)
+  ownerName  String      @default("Team")
+  budgetH    Int         @default(0)
+  spentH     Int         @default(0)
+  disabled   Boolean     @default(false)
+  tasks      Task[]
+  milestones Milestone[]
+  todos      Todo[]
+}
+
+model Task {
+  id        String  @id @default(cuid())
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId String
+  name      String
+  status    String  @default("todo")
+  ownerName String  @default("Team")
+  due       String  @default("")
+}
+
+model Milestone {
+  id        String  @id @default(cuid())
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId String
+  name      String
+  date      String
+  done      Boolean @default(false)
+}
+
+model Todo {
+  id          String   @id @default(cuid())
+  text        String
+  status      String   @default("todo")
+  priority    String   @default("Media")
+  due         String   @default("")
+  project     Project? @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  projectId   String?
+  createdAt   String   @default("")
+  completedAt String   @default("")
+}

@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0F1420;
+  --color-panel: #1A2130;
+  --color-panel2: #212A3B;
+  --color-edge: #2C3548;
+  --color-edge-hi: #3A465C;
+  --color-fg: #E6EAF2;
+  --color-fg-dim: #94A0B5;
+  --color-fg-faint: #5E6B82;
+  --color-accent: #5B8DEF;
+  --color-accent-dim: #2A3B5E;
+  --color-st-todo: #5E6B82;
+  --color-st-doing: #5B8DEF;
+  --color-st-done: #34D399;
+  --color-st-plan: #F0A04B;
+  --color-danger: #F87171;
+  --color-warn: #FBBF24;
+
+  --font-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  margin: 0;
+  font-family: var(--font-sans);
+}
+
+::-webkit-scrollbar {
+  height: 9px;
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-edge);
+  border-radius: 5px;
+}
+
+input,
+select,
+button,
+textarea {
+  font-family: inherit;
+  outline: none;
+}
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-fg-faint);
+}
+select option {
+  background: var(--color-panel);
+  color: var(--color-fg);
+}
+
+.kcard {
+  background: var(--color-panel2);
+  border: 1px solid var(--color-edge);
+  border-radius: 9px;
+  padding: 10px 11px;
+  margin-bottom: 8px;
+  cursor: grab;
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+.kcard:hover {
+  border-color: var(--color-edge-hi);
+}
+.kcard:active {
+  cursor: grabbing;
+}
